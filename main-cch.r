@@ -6,13 +6,15 @@ require(xtable)
 require(gam)
 options(warn=-1)
 
+library(RCurl)
+require(repmis)
 
-main.path <- '~/Dropbox/UW/dissertation/paper2/biostatistics-submission/biostatistics-revision-2/code-for-biostatistics-16245-R1/code-final-data-analysis/' # mac
-setwd(main.path)
+script <- getURL("https://raw.githubusercontent.com/marlenamaziarz/longitudinal-two-phase/master/code-helper-functions.r", ssl.verifypeer = FALSE)
 
-source('code-helper-functions.r')
+eval(parse(text = script))
 
-load('dataset-cch.rdata')
+source_data('https://github.com/marlenamaziarz/longitudinal-two-phase/blob/master/dataset-cch.rdata?raw=True')
+
 tau <- 6 # prediction timeframe
 dc.list      <- NULL
 results.list <- NULL
